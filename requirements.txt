@@ -1,0 +1,10 @@
+spacy
+fitz
+PyMuPDF
+futures
+collection
+fastapi
+uvicorn
+starlette
+spacy-transfomers
+python-multipart
