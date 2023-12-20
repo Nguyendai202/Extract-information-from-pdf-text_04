@@ -14,6 +14,7 @@ warnings.filterwarnings('ignore')
 model_ner = spacy.load('./model-best/')
 
 
+
 def cleanText(txt):
     punctuation = "!#$%&\'()*+:;<=>?[\\]^`{|}~-"""
     removepunctuation = txt.translate(str.maketrans('', '', punctuation))
@@ -55,6 +56,7 @@ def process_page(page):
 
 
 def getPredictions(pdf_path):
+    start_time = time()
     with fitz.open(stream=pdf_path) as doc:
         # with fitz.open(pdf_path) as doc:
         text = ""
@@ -88,6 +90,7 @@ def getPredictions(pdf_path):
     # Xoá các khoảng trắng không cần thiết và kết hợp các dòng lại
     clean_content = ' '.join(line.strip() for line in lines)
     clean_content = cleanText(clean_content)
+    end_time = time()
     doc_new = model_ner(clean_content)
     docjson = doc_new.to_json()
     dataframe_tokens = pd.DataFrame(docjson['tokens'])
@@ -126,4 +129,6 @@ def getPredictions(pdf_path):
     for key, value in entitis.items():
         join_string = ' '.join(value)
         entitis[key] = join_string
-    return entitis
+    time_request = end_time-start_time
+    return entitis,time_request
+
