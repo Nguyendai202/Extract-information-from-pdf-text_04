@@ -40,7 +40,7 @@ Dưới đây là một ví dụ README hướng dẫn chạy API này:
    python api.py
    ```
 
-4. API sẽ chạy trên `http://127.0.0.2:8000`.
+4. API sẽ chạy trên `http://127.0.0.1:8049`.
 
    
    ![input_file](input_file.png)
@@ -58,7 +58,7 @@ API này chỉ có một endpoint `/docs` nhận một hoặc nhiều văn bản
 ### Request
 
 - Phương thức: POST
-- Endpoint: `http://127.0.0.2:8000/docs`
+- Endpoint: `http://127.0.0.1:8049/docs`
 - Header: không yêu cầu
 - Body:
   - Loại: form-data
